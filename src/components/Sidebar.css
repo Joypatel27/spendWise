@@ -1,0 +1,46 @@
+/* This class applies to the desktop sidebar */
+/* .sidebar-container { */
+  /* position: sticky; */
+  /* top: 0; */
+  /* height: calc(100vh - 55px); */
+  /* background-color: #343a40; A standard black-grey */
+  /* color: #fff; */
+  /* padding-top: 20px; */
+/* } */
+/* Sidebar stays fixed on the left */
+.sidebar-container {
+  position: fixed;
+  top: 55px; /* offset for top navbar */
+  left: 0;
+  height: calc(100vh - 55px); /* full height below navbar */
+  width: 220px; /* fixed width */
+  background-color: #343a40;
+  color: #fff;
+  padding-top: 20px;
+  overflow-y: auto; /* makes sidebar scrollable if items overflow */
+}
+
+
+/* This styles the entire mobile sidebar component */
+.offcanvas.offcanvas-start {
+    background-color: #343a40; /* Same black-grey color */
+    color: #fff; /* Ensures header text is also white */
+}
+
+/* This applies to links in BOTH desktop and mobile sidebars */
+.sidebar-container .nav-link,
+.offcanvas-body .nav-link {
+  color: #ffffff; /* Set nav link text to white */
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1rem;
+}
+
+.sidebar-container .nav-link:hover,
+.offcanvas-body .nav-link:hover {
+  background-color: #495057;
+  color: #fff;
+}
+

@@ -1,0 +1,5 @@
+.main-content-row {
+  /* This pushes the entire content row (sidebar + main area)
+     down by the height of your fixed navbar. */
+  margin-top: 55px;
+}
