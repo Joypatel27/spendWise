@@ -371,6 +371,9 @@ body.dark-mode .budget-meta {
 body.dark-mode .circular-progress circle:first-of-type {
   stroke: #111827 !important;
 }
+body.dark-mode .circular-text {
+  stroke: #dbdcdd !important;
+}
 
 /* recent transactions inside budget card */
 body.dark-mode .recent-item {
