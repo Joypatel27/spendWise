@@ -1,0 +1,59 @@
+/* Reports.css - responsive charts & layout for Reports page */
+
+.reports-page {
+  max-width: 1100px; /* nice centered column on large screens */
+  margin: 0 auto;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* chart card rounded look */
+.chart-card {
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+}
+
+/* compact legend for small screens (list below the pie) */
+.compact-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+.compact-legend-item {
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  font-size: 0.95rem;
+}
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display:inline-block;
+}
+
+/* alternate compact legend styling */
+.small-legend { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; padding-top:8px; }
+.small-legend-item { display:flex; gap:8px; align-items:center; font-size:13px; }
+.small-legend .legend-swatch { width:12px; height:12px; border-radius:3px; }
+
+/* spacing / typography tuning on small screens */
+@media (max-width: 575.98px) {
+  .reports-page { max-width: 420px; padding-left: 10px; padding-right: 10px; }
+  .chart-card h5 { font-size: 1rem; margin-bottom: 10px; }
+  .compact-legend-item { font-size: 13px; }
+  .legend-swatch { width: 12px; height: 12px; }
+}
+
+/* tablets */
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .reports-page { max-width: 760px; }
+  .chart-card h5 { font-size: 1.05rem; }
+}
+
+/* large screens */
+@media (min-width: 992px) {
+  .reports-page { max-width: 1100px; }
+}

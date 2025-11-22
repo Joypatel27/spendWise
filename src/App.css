@@ -1,4 +1,14 @@
+
+/* Desktop layout (sidebar visible) */
 .main-content {
-  margin-left: 220px; /* same as sidebar width */
+  margin-left: 220px;
   padding: 20px;
+}
+
+/* Mobile + Tablet: sidebar is hidden, so content must be full width */
+@media (max-width: 991.98px) {
+  .main-content {
+    margin-left: 0 ;
+    padding: 16px;
+  }
 }

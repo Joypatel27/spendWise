@@ -1,82 +1,118 @@
-/* Larger, premium budget card */
+/* Budgets.css - responsive styles for Budgets page */
+
+/* page container */
+.budgets-page-upgraded {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+/* summary cards */
+.summary-card-upgraded {
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(16,24,40,0.04);
+}
+.summary-title { font-size: 0.95rem; color: #555; }
+.summary-value { font-size: 1.45rem; font-weight: 700; margin-top: 8px; }
+
+/* budget card */
 .budget-card-upgraded {
-  border-radius: 20px;
-  padding: 28px;
-  box-shadow: 0 8px 26px rgba(12, 31, 68, 0.09);
-  background: #ffffff;
-  width: 100%;
-  min-height: 260px;
-  display: flex;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.04);
+  overflow: visible;
 }
 
-.budget-card-upgraded .card-body {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 25px;
-  width: 100%;
+/* inner body layout - use gap to separate */
+.budget-body {
+  padding: 18px;
+  gap: 20px;
 }
 
-.circular-progress {
-  flex: 0 0 130px;
-  width: 130px;
-  height: 130px;
-}
-
-.budget-main-content {
-  flex: 1 1 600px;
-  min-width: 300px;
-}
-
-.budget-right {
-  flex: 0 0 260px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 14px;
-  min-width: 220px;
-}
-
-.recent-list {
-  display: flex;
-  gap: 14px;
-  overflow-x: auto;
-}
-
-.recent-list .list-group-item {
-  min-width: 150px;
+/* progress area: center on small screens */
+.progress-area {
   flex: 0 0 auto;
-  border-radius: 8px;
-  border: 1px solid #eef2f7;
-  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+}
+
+/* make svg scale nicely */
+.circular-progress { display: block; max-width: 100%; height: auto; }
+
+/* main content area */
+.budget-main-content { min-width: 0; }
+
+/* title and meta */
+.budget-title { font-size: 1.05rem; margin-bottom: 4px; }
+.budget-meta { max-width: 520px; color: #6b7280; }
+
+/* recent items - vertical on phone, horizontal on md+ */
+.recent-list-vertical { gap: 10px; }
+.recent-item {
+  min-width: 160px;
+  max-width: 260px;
   background: #fff;
 }
 
-.circular-text-big { font-size: 13px; font-weight: 700; }
+/* right side (amount & actions) */
+.budget-right {
+  flex: 0 0 260px;
+  min-width: 200px;
+  align-self: center;
+  text-align: right;
+}
 
-.budget-card-upgraded:hover { transform: translateY(-4px); transition: transform 180ms ease; }
+/* buttons wrap nicely */
+.budget-right .btn { white-space: nowrap; }
 
-@media (max-width: 768px) {
-  .budget-card-upgraded {
-    padding: 20px;
-    min-height: auto;
+/* small screens adjustments */
+@media (max-width: 767.98px) {
+  .budgets-page-upgraded { padding-left: 12px; padding-right: 12px; max-width: 620px; }
+
+  .budget-body {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
   }
 
-  .circular-progress {
-    flex: 0 0 110px;
-    width: 110px;
-    height: 110px;
-    margin: 0 auto;
-  }
-
-  .budget-main-content {
-    flex: 1 1 100%;
-    min-width: 100%;
-  }
+  .progress-area { width: 110px; margin: 0 auto; }
 
   .budget-right {
-    flex: 1 1 100%;
-    align-items: flex-start;
+    width: 100%;
+    flex: 0 0 auto;
     text-align: left;
+    align-items: flex-start;
   }
+
+  .recent-list-vertical { flex-direction: column; }
+  .recent-item { width: 100%; max-width: none; }
+
+  .summary-value { font-size: 1.35rem; }
 }
+
+/* tablets (iPad-ish) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .budgets-page-upgraded { max-width: 772px; }
+  .progress-area { width: 110px; }
+  .budget-right { flex: 0 0 220px; }
+}
+
+/* very small phones */
+@media (max-width: 420px) {
+  .progress-area { width: 90px; }
+  .budget-title { font-size: 1rem; }
+  .budget-right { min-width: 0; }
+  .summary-value { font-size: 1.15rem; }
+}
+
+/* make empty-card look consistent */
+.empty-card-upgraded {
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.03);
+}
+
+/* helpers */
+.text-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ensure modal center looks good on mobile */
+.modal-content { border-radius: 10px; }

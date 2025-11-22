@@ -17,40 +17,85 @@ const TopNavbar = ({ handleShowSidebar }) => {
     navigate("/login");
   };
 
-  // Better page title extraction
-  const path = location.pathname.replace(/^\/+|\/+$/g, ""); // remove leading/trailing slashes
-  const pageTitle = path ? path.split("/").pop().replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase()) : "Dashboard";
+  // Friendly page title from URL
+  const path = location.pathname.replace(/^\/+|\/+$/g, "");
+  const pageTitle = path
+    ? path
+        .split("/")
+        .pop()
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase())
+    : "Dashboard";
+
+  // initials for avatar
+  const name = user?.username || user?.name || "";
+  const initials = name
+    .split(" ")
+    .map((n) => n[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
 
   return (
-    <Navbar bg="primary" variant="dark" expand="lg" fixed="top">
-      <Container fluid>
-        <Button variant="primary" className="d-lg-none me-2" onClick={handleShowSidebar}>
+    <Navbar
+      className="top-navbar"
+      expand="lg"
+      fixed="top"
+      variant="dark"
+      style={{ backgroundColor: "#0d6efd", height: "60px" }}
+    >
+      <Container fluid className="nav-container">
+        {/* Hamburger – only on mobile / tablet */}
+        <Button
+          variant="link"
+          className="nav-hamburger d-lg-none"
+          onClick={handleShowSidebar}
+          aria-label="Open menu"
+        >
           <FaBars />
         </Button>
 
-        <Navbar.Brand as={Link} to="/dashboard" style={{ fontWeight: "bold" }}>
-          💰 SpendWise
+        {/* Brand */}
+        <Navbar.Brand
+          as={Link}
+          to="/dashboard"
+          className="d-flex align-items-center nav-brand"
+        >
+          <span className="brand-emoji" aria-hidden>
+            💰
+          </span>
+          <span className="brand-text">SpendWise</span>
         </Navbar.Brand>
 
-        {/* <Navbar.Text className="d-none d-sm-block mx-auto" style={{ color: "white", fontSize: "1.2rem", fontWeight: "500" }}>
-          {pageTitle}
-        </Navbar.Text> */}
+        {/* Page title – center on md+ */}
+        <div className="nav-page-title d-none d-md-block">{pageTitle}</div>
 
-        <Nav className="ms-auto">
+        {/* Right section */}
+        <Nav className="ms-auto align-items-center nav-right">
           {token ? (
             <>
-              <Navbar.Text style={{ color: "white", marginRight: "10px" }}>
-                Hi, {user?.username || user?.name}
-              </Navbar.Text>
-              <Button variant="outline-light" onClick={handleLogout}>
+              <div className="nav-user d-none d-sm-flex align-items-center">
+                <div className="user-avatar" title={name}>
+                  {initials || "U"}
+                </div>
+                <div className="user-greet d-none d-md-block">
+                  Hi, <span className="user-name">{name}</span>
+                </div>
+              </div>
+
+              <Button
+                size="sm"
+                variant="outline-light"
+                className="logout-btn ms-2"
+                onClick={handleLogout}
+              >
                 Logout
               </Button>
             </>
           ) : (
-            <Link to="/login">
-              <Button variant="outline-light">
-                <FaSignInAlt className="me-2" />
-                Login
+            <Link to="/login" className="d-inline-block">
+              <Button size="sm" variant="outline-light">
+                <FaSignInAlt className="me-1" /> Login
               </Button>
             </Link>
           )}
@@ -61,3 +106,4 @@ const TopNavbar = ({ handleShowSidebar }) => {
 };
 
 export default TopNavbar;
+

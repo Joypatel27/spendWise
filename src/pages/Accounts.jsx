@@ -1,177 +1,4 @@
 
-// import React, {useState } from "react";
-// import {
-//   Button,
-//   Modal,
-//   Form,
-//   Container,
-//   Row,
-//   Col,
-//   Card,
-//   ListGroup,
-//   Badge,
-// } from "react-bootstrap";
-// import { FaUniversity, FaMoneyBillWave, FaCreditCard, FaPlusCircle } from "react-icons/fa";
-
-// // --- Mock Data (Replace with your actual data fetching) ---
-// const initialAccounts = [
-//   { id: 1, name: "SBI Savings", type: "Bank", balance: 52500 },
-//   { id: 2, name: "HDFC Credit Card", type: "Credit Card", balance: -12500 },
-//   { id: 3, name: "Cash in Wallet", type: "Cash", balance: 4200 },
-//   { id: 4, name: "ICICI Checking", type: "Bank", balance: 18300 },
-// ];
-// // --- End of Mock Data ---
-
-// const Accounts = () => {
-//   const [accounts, setAccounts] = useState(initialAccounts);
-//   const [showModal, setShowModal] = useState(false);
-//   const [newAccount, setNewAccount] = useState({ name: "", type: "Bank", balance: "" });
-
-//   // Calculate total balance
-//   const totalBalance = accounts.reduce((sum, acc) => sum + acc.balance, 0);
-
-//   const handleClose = () => setShowModal(false);
-//   const handleShow = () => setShowModal(true);
-
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setNewAccount({ ...newAccount, [name]: value });
-//   };
-
-//   const handleAddAccount = (e) => {
-//     e.preventDefault();
-//     if (!newAccount.name || !newAccount.balance) {
-//       alert("Please fill in all fields.");
-//       return;
-//     }
-//     const accountToAdd = {
-//       id: Date.now(),
-//       ...newAccount,
-//       balance: parseFloat(newAccount.balance),
-//     };
-//     setAccounts([...accounts, accountToAdd]);
-//     setNewAccount({ name: "", type: "Bank", balance: "" });
-//     handleClose();
-//   };
-  
-//   // Helper to get the right icon for the account type
-//   const getAccountIcon = (type) => {
-//     switch (type) {
-//       case "Bank":
-//         return <FaUniversity className="me-2" />;
-//       case "Credit Card":
-//         return <FaCreditCard className="me-2" />;
-//       case "Cash":
-//         return <FaMoneyBillWave className="me-2" />;
-//       default:
-//         return null;
-//     }
-//   };
-
-//   return (
-//     <>
-//       <Container fluid>
-//         <h2 className="h4 mb-4">Accounts</h2>
-//         <Row>
-//           {/* Left Column: Summary and Add Button */}
-//           <Col md={4}>
-//             <Card className="mb-4">
-//               <Card.Body className="text-center">
-//                 <Card.Subtitle className="text-muted mb-2">Total Balance</Card.Subtitle>
-//                 <Card.Title className={`display-6 fw-bold ${totalBalance >= 0 ? 'text-success' : 'text-danger'}`}>
-//                   ₹{totalBalance.toLocaleString("en-IN")}
-//                 </Card.Title>
-//               </Card.Body>
-//             </Card>
-//             <div className="d-grid">
-//               <Button variant="primary" size="lg" onClick={handleShow}>
-//                 <FaPlusCircle className="me-2" /> Add New Account
-//               </Button>
-//             </div>
-//           </Col>
-
-//           {/* Right Column: Accounts List */}
-//           <Col md={8}>
-//             <Card>
-//               <Card.Header>Your Accounts</Card.Header>
-//               <ListGroup variant="flush">
-//                 {accounts.map((account) => (
-//                   <ListGroup.Item key={account.id} className="d-flex justify-content-between align-items-center">
-//                     <div>
-//                       {getAccountIcon(account.type)}
-//                       <span className="fw-bold">{account.name}</span>
-//                     </div>
-//                     <Badge 
-//                       bg={account.balance >= 0 ? "light" : "danger"} 
-//                       text={account.balance >= 0 ? "dark" : "white"} 
-//                       className="fs-6"
-//                     >
-//                       ₹{account.balance.toLocaleString("en-IN")}
-//                     </Badge>
-//                   </ListGroup.Item>
-//                 ))}
-//               </ListGroup>
-//             </Card>
-//           </Col>
-//         </Row>
-//       </Container>
-      
-//       {/* Add Account Modal */}
-//       <Modal show={showModal} onHide={handleClose} centered>
-//         <Modal.Header closeButton>
-//           <Modal.Title>Add New Account</Modal.Title>
-//         </Modal.Header>
-//         <Modal.Body>
-//           <Form onSubmit={handleAddAccount}>
-//             <Form.Group className="mb-3">
-//               <Form.Label>Account Name</Form.Label>
-//               <Form.Control
-//                 type="text"
-//                 name="name"
-//                 value={newAccount.name}
-//                 onChange={handleInputChange}
-//                 placeholder="e.g., SBI Savings"
-//                 required
-//                 autoFocus
-//               />
-//             </Form.Group>
-//             <Form.Group className="mb-3">
-//               <Form.Label>Account Type</Form.Label>
-//               <Form.Select name="type" value={newAccount.type} onChange={handleInputChange}>
-//                 <option>Bank</option>
-//                 <option>Credit Card</option>
-//                 <option>Cash</option>
-//               </Form.Select>
-//             </Form.Group>
-//             <Form.Group className="mb-3">
-//               <Form.Label>Current Balance (₹)</Form.Label>
-//               <Form.Control
-//                 type="number"
-//                 name="balance"
-//                 value={newAccount.balance}
-//                 onChange={handleInputChange}
-//                 placeholder="Enter current balance"
-//                 required
-//               />
-//                <Form.Text className="text-muted">
-//                 For credit cards, enter this as a negative number (e.g., -5000).
-//               </Form.Text>
-//             </Form.Group>
-//             <Button variant="primary" type="submit" className="w-100 mt-3">
-//               Save Account
-//             </Button>
-//           </Form>
-//         </Modal.Body>
-//       </Modal>
-//     </>
-//   );
-// };
-
-// export default Accounts;
-
-
-
-// src/pages/Accounts.jsx
 import React, { useEffect, useState } from "react";
 import {
   Button,
@@ -184,16 +11,18 @@ import {
   ListGroup,
   Badge,
   Spinner,
+  Dropdown
 } from "react-bootstrap";
 import { FaUniversity, FaMoneyBillWave, FaCreditCard, FaPlusCircle, FaTrash, FaEdit } from "react-icons/fa";
 import axios from "axios";
+import "./Accounts.css"; // <-- import the CSS below
 
 const accountIcon = (type) => {
   switch (type) {
-    case "Bank": return <FaUniversity className="me-2" />;
-    case "Credit Card": return <FaCreditCard className="me-2" />;
-    case "Cash": return <FaMoneyBillWave className="me-2" />;
-    default: return null;
+    case "Bank": return <FaUniversity className="acct-icon" />;
+    case "Credit Card": return <FaCreditCard className="acct-icon" />;
+    case "Cash": return <FaMoneyBillWave className="acct-icon" />;
+    default: return <FaMoneyBillWave className="acct-icon" />;
   }
 };
 
@@ -278,12 +107,13 @@ const Accounts = () => {
   };
 
   return (
-    <Container fluid style={{ paddingTop: 12 }}>
+    <Container fluid style={{ paddingTop: 12, paddingBottom: 24 }}>
       <h2 className="h4 mb-4">Accounts</h2>
 
       <Row className="mb-4">
-        <Col md={4}>
-          <Card className="mb-3">
+        {/* Left column - total + CTA */}
+        <Col xs={12} md={4} className="mb-3">
+          <Card className="mb-3 total-card">
             <Card.Body className="text-center">
               <Card.Subtitle className="text-muted mb-2">Total Balance</Card.Subtitle>
               <Card.Title className={`display-6 fw-bold ${totalBalance >= 0 ? 'text-success' : 'text-danger'}`}>
@@ -293,15 +123,16 @@ const Accounts = () => {
           </Card>
 
           <div className="d-grid">
-            <Button variant="primary" size="lg" onClick={openAdd}>
+            <Button variant="primary" size="lg" onClick={openAdd} className="add-account-btn">
               <FaPlusCircle className="me-2" /> Add New Account
             </Button>
           </div>
         </Col>
 
-        <Col md={8}>
-          <Card>
-            <Card.Header>Your Accounts</Card.Header>
+        {/* Right column - accounts list */}
+        <Col xs={12} md={8}>
+          <Card className="accounts-card">
+            <Card.Header className="fw-bold">Your Accounts</Card.Header>
             <ListGroup variant="flush">
               {loading ? (
                 <ListGroup.Item className="text-center py-4"><Spinner animation="border" /></ListGroup.Item>
@@ -309,29 +140,40 @@ const Accounts = () => {
                 <ListGroup.Item className="text-center text-muted py-4">No accounts yet.</ListGroup.Item>
               ) : (
                 accounts.map((acc) => (
-                  <ListGroup.Item key={acc._id} className="d-flex justify-content-between align-items-center">
-                    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                      {accountIcon(acc.type)}
-                      <div>
-                        <div className="fw-bold">{acc.name}</div>
-                        <div className="small text-muted">{acc.type}</div>
+                  <ListGroup.Item key={acc._id} className="acct-row d-flex align-items-center justify-content-between">
+                    <div className="acct-left d-flex align-items-center">
+                      <div className="acct-icon-wrap">{accountIcon(acc.type)}</div>
+                      <div className="acct-text">
+                        <div className="acct-name fw-bold text-truncate">{acc.name}</div>
+                        <div className="small text-muted acct-type">{acc.type}</div>
                       </div>
                     </div>
 
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                      <div>
-                        <Badge bg={acc.balance >= 0 ? "light" : "danger"} text={acc.balance >= 0 ? "dark" : "white"} className="fs-6">
+                    <div className="acct-right d-flex align-items-center">
+                      <div className="me-2">
+                        <Badge pill bg={acc.balance >= 0 ? "light" : "danger"} text={acc.balance >= 0 ? "dark" : "light"} className="acct-badge">
                           ₹{Number(acc.balance).toLocaleString("en-IN")}
                         </Badge>
                       </div>
 
-                      <div className="d-flex gap-2">
-                        <Button variant="outline-secondary" size="sm" onClick={() => openEdit(acc)}>
+                      <div className="acct-actions d-none d-sm-flex gap-2">
+                        <Button variant="outline-secondary" size="sm" onClick={() => openEdit(acc)} aria-label={`Edit ${acc.name}`}>
                           <FaEdit />
                         </Button>
-                        <Button variant="outline-danger" size="sm" onClick={() => handleDelete(acc._id)}>
+                        <Button variant="outline-danger" size="sm" onClick={() => handleDelete(acc._id)} aria-label={`Delete ${acc.name}`}>
                           <FaTrash />
                         </Button>
+                      </div>
+
+                      {/* compact dropdown for xs screens */}
+                      <div className="acct-actions-sm d-sm-none">
+                        <Dropdown align="end">
+                          <Dropdown.Toggle variant="light" size="sm" id={`acct-dd-${acc._id}`}>⋮</Dropdown.Toggle>
+                          <Dropdown.Menu>
+                            <Dropdown.Item onClick={() => openEdit(acc)}>Edit</Dropdown.Item>
+                            <Dropdown.Item onClick={() => handleDelete(acc._id)}>Delete</Dropdown.Item>
+                          </Dropdown.Menu>
+                        </Dropdown>
                       </div>
                     </div>
                   </ListGroup.Item>

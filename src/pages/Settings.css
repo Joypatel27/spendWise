@@ -1,0 +1,86 @@
+/* Settings.css - responsive settings layout */
+
+/* page container */
+.settings-page {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* navigation column card */
+.settings-nav-card {
+  border-radius: 10px;
+  padding: 8px;
+}
+
+/* small-screen nav behavior:
+   - hide left nav by default on xs, show with .open
+   - keep accessible and stacked horizontally on xs when opened */
+.settings-nav-col {
+  transition: max-height 0.2s ease, transform 0.2s ease;
+}
+@media (max-width: 767.98px) {
+  .settings-nav-col {
+    max-height: 0;
+    overflow: hidden;
+  }
+  .settings-nav-col.open {
+    max-height: 400px; /* enough to show nav on small screens */
+  }
+
+  /* Nav links become full-width stacked buttons on mobile */
+  .settings-nav-card .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+  }
+}
+
+/* larger screens: nav fixed left column */
+@media (min-width: 768px) {
+  .settings-nav-col { max-height: none; }
+  .settings-nav-card .nav-link { padding: 10px 12px; }
+}
+
+/* panels spacing */
+.settings-panel { margin-bottom: 12px; }
+
+/* Card header style consistent */
+.card-header .card-title {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Theme toggle button sizes */
+.theme-toggle-btn {
+  min-width: 140px;
+}
+
+/* ensure inputs & cards shrink on mobile */
+.card input.form-control {
+  font-size: 0.95rem;
+}
+
+/* adjust overall page padding on small screens */
+@media (max-width: 575.98px) {
+  .settings-page { padding-left: 12px; padding-right: 12px; max-width: 420px; }
+  .theme-toggle-btn { min-width: 120px; font-size: 0.95rem; }
+}
+
+/* dark-mode support helpers (body.dark-mode must be toggled) */
+body.dark-mode {
+  background: #0f172a;
+  color: #e6eef8;
+}
+body.dark-mode .card {
+  background: #071233;
+  color: #e6eef8;
+  border-color: rgba(255,255,255,0.04);
+}
+body.dark-mode .nav-link { color: rgba(255,255,255,0.85); }
+body.dark-mode .theme-toggle-btn { border-color: rgba(255,255,255,0.06); }
+
+/* small visual tweaks */
+.settings-header { gap: 8px; }

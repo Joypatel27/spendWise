@@ -1,0 +1,140 @@
+/* Transactions.css - responsive layout for transactions list */
+
+.day-block {
+  margin-bottom: 20px;
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+
+.day-total {
+  font-weight: 600;
+}
+.day-total.negative { color: #111; } /* black-ish like original screenshot */
+.day-total.positive { color: #16a34a; }
+
+.day-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* each transaction row */
+.txn-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  gap: 12px;
+  /* allow wrapping on very narrow widths */
+  flex-wrap: wrap;
+}
+
+/* left portion (icon + metadata) */
+.txn-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0; /* allow children to shrink */
+  flex: 1 1 220px; /* take remaining space, shrink when needed */
+}
+
+.txn-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.txn-meta {
+  min-width: 0;
+}
+
+.txn-title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
+.txn-sub {
+  font-size: 13px;
+  color: gray;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* right portion (amount + buttons) */
+.txn-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+/* amount */
+.txn-amount {
+  font-weight: 600;
+  font-size: 15px;
+  min-width: 70px;
+  text-align: right;
+}
+.amt-negative { color: #ef4444; }
+.amt-positive { color: #16a34a; }
+
+/* actions - show inline on medium+, collapse to dropdown on small */
+.actions-large { display: flex; gap: 6px; }
+.actions-small { display: none; }
+
+/* small screens: stack right under left, hide inline actions, show dropdown */
+@media (max-width: 575.98px) {
+  .txn-item {
+    align-items: flex-start;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .txn-left {
+    flex: 1 1 100%;
+    gap: 10px;
+  }
+
+  .txn-meta { width: calc(100% - 64px); } /* keep meta width reasonable */
+  .txn-right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 0;
+    margin-top: 8px;
+    gap: 12px;
+  }
+
+  .txn-amount { min-width: 0; }
+
+  .actions-large { display: none; }
+  .actions-small { display: block; }
+}
+
+/* slightly smaller icon on very small phones */
+@media (max-width: 360px) {
+  .txn-icon { width: 36px; height: 36px; font-size: 18px; }
+  .txn-title { max-width: 160px; font-size: 14px; }
+  .txn-amount { font-size: 14px; }
+}

@@ -1,0 +1,64 @@
+/* Dashboard.css */
+
+/* Wrapper for pie + legend: horizontal on md+, vertical on small screens */
+.pie-legend-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+/* pie area should be flexible but limited */
+.pie-container {
+  flex: 0 0 260px; /* prefer 260px on larger screens */
+  min-width: 160px;
+  max-width: 360px;
+  height: 220px;
+}
+
+/* legend takes remaining space */
+.legend-container {
+  flex: 1 1 auto;
+  min-width: 120px;
+}
+
+/* small legend row */
+.legend-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+/* placeholder when no data */
+.empty-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #6c757d; /* bootstrap muted */
+  font-size: 0.95rem;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 767.98px) {
+  .pie-legend-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .pie-container {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 200px;
+    max-width: none;
+  }
+  .legend-container {
+    width: 100%;
+  }
+}

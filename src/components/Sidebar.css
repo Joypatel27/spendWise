@@ -1,46 +1,75 @@
-/* This class applies to the desktop sidebar */
-/* .sidebar-container { */
-  /* position: sticky; */
-  /* top: 0; */
-  /* height: calc(100vh - 55px); */
-  /* background-color: #343a40; A standard black-grey */
-  /* color: #fff; */
-  /* padding-top: 20px; */
-/* } */
-/* Sidebar stays fixed on the left */
-.sidebar-container {
+/* src/components/Sidebar.css */
+
+/* DESKTOP SIDEBAR (fixed) */
+.sidebar-desktop {
   position: fixed;
-  top: 55px; /* offset for top navbar */
+  top: 60px; /* same as navbar height */
   left: 0;
-  height: calc(100vh - 55px); /* full height below navbar */
-  width: 220px; /* fixed width */
+  height: calc(100vh - 60px);
+  width: 220px;
   background-color: #343a40;
   color: #fff;
   padding-top: 20px;
-  overflow-y: auto; /* makes sidebar scrollable if items overflow */
+  overflow-y: auto;
+  z-index: 1040;
 }
 
-
-/* This styles the entire mobile sidebar component */
-.offcanvas.offcanvas-start {
-    background-color: #343a40; /* Same black-grey color */
-    color: #fff; /* Ensures header text is also white */
-}
-
-/* This applies to links in BOTH desktop and mobile sidebars */
-.sidebar-container .nav-link,
-.offcanvas-body .nav-link {
-  color: #ffffff; /* Set nav link text to white */
+/* Desktop links */
+.sidebar-desktop .nav-link {
+  color: #ffffff;
   padding: 12px 20px;
   display: flex;
   align-items: center;
   gap: 15px;
   font-size: 1rem;
+  text-decoration: none;
 }
 
-.sidebar-container .nav-link:hover,
-.offcanvas-body .nav-link:hover {
+.sidebar-desktop .nav-link span {
+  white-space: nowrap;
+}
+
+.sidebar-desktop .nav-link:hover {
   background-color: #495057;
-  color: #fff;
+  color: #ffffff;
 }
 
+/* hide desktop sidebar on small screens */
+@media (max-width: 991.98px) {
+  .sidebar-desktop {
+    display: none;
+  }
+}
+
+/* MOBILE SIDEBAR (inside offcanvas card) */
+.mobile-sidebar .sidebar-mobile {
+  position: static;
+  height: auto;
+  width: 100%;
+  background: transparent;
+  padding-top: 0;
+  overflow-y: visible;
+}
+
+/* Links inside mobile card */
+.mobile-sidebar .sidebar-mobile .nav-link {
+  color: #111827;
+  padding: 12px 18px;
+  margin: 4px 14px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.mobile-sidebar .sidebar-mobile .nav-link svg {
+  font-size: 18px;
+}
+
+.mobile-sidebar .sidebar-mobile .nav-link:hover {
+  background: #e5f0ff;
+  color: #111827;
+}

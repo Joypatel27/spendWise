@@ -1,10 +1,10 @@
 
-
 // src/pages/Transactions.jsx
 import React, { useState, useEffect } from "react";
-import { Button, Modal, Form, Spinner } from "react-bootstrap";
+import { Button, Modal, Form, Spinner, Dropdown } from "react-bootstrap";
 import axios from "axios";
 import { useData } from "../context/DataContext";
+import "./Transactions.css"; // <-- import the CSS below
 
 const categories = [
   { name: "Groceries", icon: "🛒" },
@@ -53,7 +53,7 @@ const Transactions = () => {
 
   // group by date string (use txn.date if present else createdAt)
   const grouped = (transactions || []).reduce((acc, txn) => {
-    const key = txn.date ? txn.date : (txn.createdAt ? txn.createdAt.split("T")[0] : new Date().toISOString().split("T")[0]);
+    const key = txn.date ? txn.date.split("T")[0] : (txn.createdAt ? txn.createdAt.split("T")[0] : new Date().toISOString().split("T")[0]);
     if (!acc[key]) acc[key] = [];
     acc[key].push(txn);
     return acc;
@@ -76,7 +76,7 @@ const Transactions = () => {
     setCategory(txn.category);
     setMethod(txn.method);
     setCurrency(txn.currency || "₹");
-    setDate(txn.date ? txn.date.split("T")[0] : txn.date);
+    setDate(txn.date ? txn.date.split("T")[0] : today);
     setSelectedAccount(txn.account ? (txn.account._id || txn.account) : "");
     setShow(true);
   };
@@ -87,8 +87,6 @@ const Transactions = () => {
       return;
     }
 
-    // Keep convention: expense -> negative amount; income would be positive
-    // For now input is treated as expense (negative). You can extend UI later to choose income/expense.
     const amt = -Math.abs(Number(amount)); // expense
     const payload = {
       category,
@@ -110,7 +108,6 @@ const Transactions = () => {
         });
       }
 
-      // refresh shared data (transactions + accounts + budgets)
       await refreshAll();
       setShow(false);
       setEditingTxn(null);
@@ -126,7 +123,6 @@ const Transactions = () => {
       await axios.delete(`http://localhost:5000/api/transactions/${txnId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      // refresh shared data
       await refreshAll();
     } catch (err) {
       console.error("Delete txn error:", err);
@@ -142,75 +138,79 @@ const Transactions = () => {
     );
   }
 
+  // sort date keys descending
+  const dateKeys = Object.keys(grouped).sort((a,b)=> new Date(b) - new Date(a));
+
   return (
-    <div style={{ padding: "20px" }}>
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h2>Transactions</h2>
-        <div>
-          <Button variant="primary" onClick={openAdd}>+ Add Transaction</Button>
-        </div>
-      </div>
+   
+<div style={{ padding: "20px" }}>
+  {/* Responsive header: column on mobile, row on bigger screens */}
+  <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-3">
+    <h2 className="mb-2 mb-sm-0">Transactions</h2>
+
+    <Button
+      variant="primary"
+      onClick={openAdd}
+      className="mt-1 mt-sm-0"
+      style={{
+        width: "100%",      // full width on very small screens
+        maxWidth: "220px",  // normal sized button on tablets/desktop
+        alignSelf: "flex-start",
+      }}
+    >
+      + Add Transaction
+    </Button>
+  </div>
 
       <div>
-        {Object.keys(grouped).sort((a,b)=> new Date(b) - new Date(a)).map(dateKey => {
+        {dateKeys.map(dateKey => {
           const totalForDay = grouped[dateKey].reduce((sum, txn) => sum + Number(txn.amount || 0), 0);
           return (
-            <div key={dateKey} style={{ marginBottom: "20px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", fontWeight: "600", marginBottom: "10px" }}>
-                <h6 style={{ margin: 0 }}>{formatDate(dateKey)}</h6>
-                <span style={{ color: totalForDay < 0 ? "black" : "green" }}>
-                  {totalForDay < 0 ? "- " : "+ "}₹{Math.abs(totalForDay)}
+            <div key={dateKey} className="day-block">
+              <div className="day-header d-flex align-items-center justify-content-between">
+                <h6 className="mb-0">{formatDate(dateKey)}</h6>
+                <span className={`day-total ${totalForDay < 0 ? "negative" : "positive"}`}>
+                  {totalForDay < 0 ? "- " : "+ "}₹{Math.abs(totalForDay).toLocaleString("en-IN")}
                 </span>
               </div>
 
-              {grouped[dateKey].map(txn => (
-                <div key={txn._id} style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  background: "#fff",
-                  padding: "12px",
-                  marginBottom: "10px",
-                  borderRadius: "12px",
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
-                }}>
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    <div style={{
-                      width: "40px",
-                      height: "40px",
-                      borderRadius: "12px",
-                      background: "#f3f4f6",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "20px",
-                      marginRight: "12px",
-                    }}>{getIcon(txn.category)}</div>
+              <div className="day-list">
+                {grouped[dateKey].map(txn => (
+                  <div key={txn._id} className="txn-item">
+                    <div className="txn-left">
+                      <div className="txn-icon">{getIcon(txn.category)}</div>
+                      <div className="txn-meta">
+                        <div className="txn-title">{txn.category}</div>
+                        <div className="txn-sub small text-muted">{txn.method} • {txn.account?.name || "No account selected"}</div>
+                      </div>
+                    </div>
 
-                    <div>
-                      <div style={{ fontWeight: "600" }}>{txn.category}</div>
-                      <div style={{ fontSize: "13px", color: "gray" }}>{txn.method} • {txn.account?.name || "No account selected"}</div>
+                    <div className="txn-right">
+                      <div className={`txn-amount ${txn.amount < 0 ? "amt-negative" : "amt-positive"}`}>
+                        {txn.amount < 0 ? "- " : "+ "}{txn.currency || "₹"}{Math.abs(txn.amount).toLocaleString("en-IN")}
+                      </div>
+
+                      <div className="txn-actions">
+                        {/* On small screens collapse into a small dropdown to save space */}
+                        <div className="actions-large">
+                          <Button size="sm" variant="outline-secondary" onClick={() => openEdit(txn)}>Edit</Button>
+                          <Button size="sm" variant="outline-danger" onClick={() => handleDelete(txn._id)}>Delete</Button>
+                        </div>
+
+                        <div className="actions-small">
+                          <Dropdown align="end">
+                            <Dropdown.Toggle size="sm" variant="light" id="txn-actions-dd">⋮</Dropdown.Toggle>
+                            <Dropdown.Menu>
+                              <Dropdown.Item onClick={() => openEdit(txn)}>Edit</Dropdown.Item>
+                              <Dropdown.Item onClick={() => handleDelete(txn._id)}>Delete</Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                  <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                    <div style={{
-                      fontWeight: "600",
-                      color: txn.amount < 0 ? "red" : "green",
-                      fontSize: "16px",
-                      minWidth: "70px",
-                      textAlign: "right",
-                    }}>
-                      {txn.amount < 0 ? "- " : "+ "}{txn.currency}{Math.abs(txn.amount)}
-                    </div>
-
-                    <div style={{ display: "flex", gap: 6 }}>
-                      <Button size="sm" variant="outline-secondary" onClick={() => openEdit(txn)}>Edit</Button>
-                      <Button size="sm" variant="outline-danger" onClick={() => handleDelete(txn._id)}>Delete</Button>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           );
         })}

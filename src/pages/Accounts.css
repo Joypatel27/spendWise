@@ -1,0 +1,109 @@
+/* Accounts.css - responsive styles for Accounts page */
+
+/* Total card tweaks for mobile */
+.total-card .card-title {
+  font-size: 1.75rem;
+}
+.add-account-btn {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+/* Accounts list card */
+.accounts-card .list-group-item {
+  padding: 12px 16px;
+}
+
+/* Account row */
+.acct-row {
+  gap: 12px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Left area (icon + text) */
+.acct-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1 1 220px;
+}
+
+.acct-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.acct-icon {
+  font-size: 20px;
+}
+
+/* text truncation to prevent overflow */
+.acct-text { min-width: 0; }
+.acct-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+}
+.acct-type { font-size: 13px; }
+
+/* Right area (balance + actions) */
+.acct-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+/* badge style */
+.acct-badge {
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  border-radius: 12px;
+}
+
+/* actions hide on xs (show dropdown) */
+.acct-actions { display: flex; gap: 6px; }
+.acct-actions-sm { display: none; }
+
+/* mobile adjustments */
+@media (max-width: 575.98px) {
+  .acct-row {
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .acct-left {
+    flex: 1 1 100%;
+  }
+
+  .acct-right {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+
+  .acct-badge { font-size: 0.9rem; padding: 6px 10px; }
+
+  .acct-actions { display: none; }
+  .acct-actions-sm { display: block; }
+}
+
+/* very small phones - scale down slightly */
+@media (max-width: 360px) {
+  .acct-icon-wrap { width: 36px; height: 36px; }
+  .acct-icon { font-size: 18px; }
+  .acct-name { max-width: 160px; font-size: 14px; }
+  .acct-badge { font-size: 0.85rem; padding: 6px 8px; }
+  .add-account-btn { font-size: 0.95rem; padding: 0.6rem 0.9rem; }
+}
