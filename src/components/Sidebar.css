@@ -1,75 +1,440 @@
-/* src/components/Sidebar.css */
+/*************************************************
+  GLOBAL DARK MODE THEME
+  Triggered by: body.dark-mode
+**************************************************/
 
-/* DESKTOP SIDEBAR (fixed) */
-.sidebar-desktop {
-  position: fixed;
-  top: 60px; /* same as navbar height */
+body.dark-mode {
+  background-color: #020617 !important; /* dark slate */
+  color: #e5e7eb !important;            /* light gray text */
+}
+
+/* app shell */
+body.dark-mode .app-layout {
+  background-color: #020617 !important;
+}
+
+body.dark-mode .main-content,
+body.dark-mode main {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+/*************************************************
+  TOP NAVBAR
+**************************************************/
+
+body.dark-mode .top-navbar,
+body.dark-mode .navbar {
+  background-color: #020617 !important;
+  border-bottom: 1px solid #1f2937 !important;
+}
+
+body.dark-mode .nav-brand,
+body.dark-mode .navbar-brand,
+body.dark-mode .navbar-text,
+body.dark-mode .nav-link,
+body.dark-mode .nav-page-title {
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .navbar-brand:hover {
+  color: #f9fafb !important;
+}
+
+body.dark-mode .user-avatar {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+  border: 1px solid #1f2937 !important;
+}
+
+/* logout button outline */
+body.dark-mode .logout-btn,
+body.dark-mode .btn-outline-light {
+  color: #e5e7eb !important;
+  border-color: #e5e7eb !important;
+}
+
+body.dark-mode .logout-btn:hover,
+body.dark-mode .btn-outline-light:hover {
+  background-color: #e5e7eb !important;
+  color: #020617 !important;
+}
+
+/*************************************************
+  SIDEBAR – DESKTOP
+  .sidebar-desktop comes from Sidebar.jsx
+**************************************************/
+
+body.dark-mode .sidebar-desktop {
+  position: fixed; /* keep layout behaviour */
+  top: 60px;
   left: 0;
   height: calc(100vh - 60px);
   width: 220px;
-  background-color: #343a40;
-  color: #fff;
-  padding-top: 20px;
-  overflow-y: auto;
-  z-index: 1040;
+  background-color: #020617 !important;   /* match main bg */
+  color: #e5e7eb !important;
+  border-right: 1px solid #111827 !important;
 }
 
 /* Desktop links */
-.sidebar-desktop .nav-link {
-  color: #ffffff;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size: 1rem;
-  text-decoration: none;
+body.dark-mode .sidebar-desktop .nav-link {
+  color: #e5e7eb !important;
 }
 
-.sidebar-desktop .nav-link span {
-  white-space: nowrap;
+body.dark-mode .sidebar-desktop .nav-link:hover,
+body.dark-mode .sidebar-desktop .nav-link:focus,
+body.dark-mode .sidebar-desktop .nav-link.active {
+  background-color: #111827 !important;
+  color: #ffffff !important;
 }
 
-.sidebar-desktop .nav-link:hover {
-  background-color: #495057;
-  color: #ffffff;
+/*************************************************
+  SIDEBAR – MOBILE (Offcanvas)
+  Offcanvas has classes: "offcanvas ... mobile-sidebar"
+**************************************************/
+
+/* whole offcanvas */
+body.dark-mode .offcanvas.mobile-sidebar {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
 }
 
-/* hide desktop sidebar on small screens */
-@media (max-width: 991.98px) {
-  .sidebar-desktop {
-    display: none;
-  }
+/* header strip at top (remove white) */
+body.dark-mode .offcanvas.mobile-sidebar .offcanvas-header {
+  background-color: #020617 !important;
+  border-bottom: 1px solid #111827 !important;
 }
 
-/* MOBILE SIDEBAR (inside offcanvas card) */
-.mobile-sidebar .sidebar-mobile {
-  position: static;
-  height: auto;
-  width: 100%;
-  background: transparent;
-  padding-top: 0;
-  overflow-y: visible;
+/* title + close button */
+body.dark-mode .offcanvas.mobile-sidebar .offcanvas-title {
+  color: #f9fafb !important;
 }
 
-/* Links inside mobile card */
-.mobile-sidebar .sidebar-mobile .nav-link {
-  color: #111827;
-  padding: 12px 18px;
-  margin: 4px 14px;
+body.dark-mode .offcanvas.mobile-sidebar .btn-close {
+  filter: invert(1); /* make X white on dark bg */
+}
+
+/* links inside mobile menu */
+body.dark-mode .mobile-sidebar .sidebar-mobile .nav-link {
+  color: #e5e7eb !important;
+  background: transparent !important;
+}
+
+body.dark-mode .mobile-sidebar .sidebar-mobile .nav-link:hover,
+body.dark-mode .mobile-sidebar .sidebar-mobile .nav-link:focus,
+body.dark-mode .mobile-sidebar .sidebar-mobile .nav-link.active {
+  background-color: #111827 !important;
+  color: #ffffff !important;
+}
+
+/*************************************************
+  GENERIC CARDS / LISTS / TABLES
+**************************************************/
+
+body.dark-mode .card,
+body.dark-mode .summary-card-upgraded,
+body.dark-mode .total-card,
+body.dark-mode .accounts-card,
+body.dark-mode .budget-card-upgraded,
+body.dark-mode .empty-card-upgraded,
+body.dark-mode .stat-card,
+body.dark-mode .report-card {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2937 !important;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.45) !important;
+}
+
+body.dark-mode .card-header {
+  background-color: #020617 !important;
+  border-bottom-color: #1f2937 !important;
+}
+
+/* list-group items */
+body.dark-mode .list-group-item {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2937 !important;
+}
+
+/* bootstrap muted text -> brighter in dark mode */
+body.dark-mode .text-muted,
+body.dark-mode .small,
+body.dark-mode .form-text {
+  color: #9ca3af !important;
+}
+
+/*************************************************
+  BUTTONS / BADGES / FORMS
+**************************************************/
+
+/* primary button */
+body.dark-mode .btn-primary {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #f9fafb !important;
+}
+
+body.dark-mode .btn-primary:hover {
+  background-color: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+}
+
+/* outline-secondary */
+body.dark-mode .btn-outline-secondary {
+  border-color: #4b5563 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .btn-outline-secondary:hover {
+  background-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+/* light buttons (dropdown trigger, etc.) */
+body.dark-mode .btn-light,
+body.dark-mode .dropdown-toggle.btn-light {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2937 !important;
+}
+
+body.dark-mode .btn-light:hover,
+body.dark-mode .dropdown-toggle.btn-light:hover {
+  background-color: #1f2937 !important;
+}
+
+/* badges */
+body.dark-mode .badge.bg-light,
+body.dark-mode .badge.bg-secondary {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+}
+
+/* forms */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2937 !important;
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 0.15rem rgba(59,130,246,0.4) !important;
+}
+
+/*************************************************
+  MODALS
+**************************************************/
+
+body.dark-mode .modal-content {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2937 !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer {
+  border-color: #1f2937 !important;
+}
+
+body.dark-mode .modal-backdrop.show {
+  opacity: 0.7;
+}
+
+/*************************************************
+  HEADINGS / CHART TOOLTIPS
+**************************************************/
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5 {
+  color: #f9fafb !important;
+}
+
+/* Recharts default tooltip */
+body.dark-mode .recharts-default-tooltip {
+  background-color: #020617 !important;
+  border: 1px solid #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+/*************************************************
+  TRANSACTIONS PAGE
+**************************************************/
+
+/* day header ("Friday 21 Nov - ₹…") */
+body.dark-mode .day-header {
+  color: #e5e7eb !important;
+}
+
+/* daily total */
+body.dark-mode .day-total {
+  font-weight: 600;
+}
+body.dark-mode .day-total.negative {
+  color: #f97373 !important; /* light red */
+}
+body.dark-mode .day-total.positive {
+  color: #4ade80 !important; /* light green */
+}
+
+/* each transaction row */
+body.dark-mode .txn-item {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border: 1px solid #1f2937 !important;
+}
+
+/* icon box */
+body.dark-mode .txn-icon {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+}
+
+/* title & subtitle */
+body.dark-mode .txn-title {
+  color: #f9fafb !important;
+}
+
+body.dark-mode .txn-sub {
+  color: #9ca3af !important;
+}
+
+/* amount */
+body.dark-mode .txn-amount {
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .txn-amount.amt-negative {
+  color: #f97373 !important;
+}
+
+body.dark-mode .txn-amount.amt-positive {
+  color: #4ade80 !important;
+}
+
+/*************************************************
+  ACCOUNTS PAGE
+**************************************************/
+
+body.dark-mode .total-card,
+body.dark-mode .accounts-card {
+  background-color: #020617 !important;
+  border-color: #1f2937 !important;
+}
+
+/* account rows */
+body.dark-mode .acct-row {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+/* icon background */
+body.dark-mode .acct-icon-wrap {
+  background-color: #111827 !important;
+}
+
+body.dark-mode .acct-icon {
+  color: #e5e7eb !important;
+}
+
+/* text */
+body.dark-mode .acct-name {
+  color: #f9fafb !important;
+}
+
+body.dark-mode .acct-type {
+  color: #9ca3af !important;
+}
+
+/* balance pill */
+body.dark-mode .acct-badge {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+}
+
+/*************************************************
+  BUDGETS PAGE
+**************************************************/
+
+body.dark-mode .budgets-page-upgraded {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+/* summary cards */
+body.dark-mode .summary-title {
+  color: #9ca3af !important;
+}
+
+body.dark-mode .summary-value {
+  color: #f9fafb !important;
+}
+
+/* budget card main */
+body.dark-mode .budget-card-upgraded {
+  background-color: #020617 !important;
+  border-color: #1f2937 !important;
+}
+
+body.dark-mode .budget-title {
+  color: #f9fafb !important;
+}
+
+body.dark-mode .budget-meta {
+  color: #9ca3af !important;
+}
+
+/* circular progress track */
+body.dark-mode .circular-progress circle:first-of-type {
+  stroke: #111827 !important;
+}
+
+/* recent transactions inside budget card */
+body.dark-mode .recent-item {
+  background-color: #020617 !important;
+  border-color: #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .recent-item .text-muted,
+body.dark-mode .recent-item .small {
+  color: #9ca3af !important;
+}
+
+/*************************************************
+  SETTINGS PAGE
+**************************************************/
+
+body.dark-mode .settings-page {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+/*************************************************
+  SCROLLBARS (optional)
+**************************************************/
+
+body.dark-mode ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+body.dark-mode ::-webkit-scrollbar-track {
+  background: #020617;
+}
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #374151;
   border-radius: 999px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  text-decoration: none;
+}
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
 }
 
-.mobile-sidebar .sidebar-mobile .nav-link svg {
-  font-size: 18px;
-}
-
-.mobile-sidebar .sidebar-mobile .nav-link:hover {
-  background: #e5f0ff;
-  color: #111827;
-}

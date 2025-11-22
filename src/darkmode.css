@@ -1,61 +1,524 @@
-/* DARK MODE GLOBAL THEME */
+/*************************************************
+  GLOBAL DARK MODE THEME
+  Triggered by:  body.dark-mode
+**************************************************/
+
 body.dark-mode {
-  background-color: #0d1117 !important;
-  color: white !important;
+  background-color: #020617 !important; /* dark slate */
+  color: #e5e7eb !important;            /* light gray text */
 }
 
-/* cards */
-body.dark-mode .card {
-  background-color: #161b22 !important;
-  color: white !important;
-  border-color: #30363d !important;
+/* app shell */
+body.dark-mode .app-layout {
+  background-color: #020617 !important;
 }
 
-/* sidebar */
+body.dark-mode .main-content,
+body.dark-mode main {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+/*************************************************
+  TOP NAVBAR
+**************************************************/
+
+body.dark-mode .top-navbar,
+body.dark-mode .navbar {
+  background-color: #020617 !important;
+  border-bottom: 1px solid #1f2937 !important;
+}
+
+body.dark-mode .nav-brand,
+body.dark-mode .navbar-brand,
+body.dark-mode .navbar-text,
+body.dark-mode .nav-link,
+body.dark-mode .nav-page-title {
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .nav-link:hover,
+body.dark-mode .navbar-brand:hover {
+  color: #f9fafb !important;
+}
+
+body.dark-mode .user-avatar {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+  border: 1px solid #1f2937 !important;
+}
+
+/* logout button outline */
+body.dark-mode .logout-btn,
+body.dark-mode .btn-outline-light {
+  color: #e5e7eb !important;
+  border-color: #e5e7eb !important;
+}
+
+body.dark-mode .logout-btn:hover,
+body.dark-mode .btn-outline-light:hover {
+  background-color: #e5e7eb !important;
+  color: #020617 !important;
+}
+
+/*************************************************
+  SIDEBAR
+**************************************************/
+
 body.dark-mode .sidebar-container {
-  background-color: #161b22 !important;
-  border-color: #30363d !important;
+  background-color: #0b1120 !important;
+  color: #e5e7eb !important;
+  border-right: 1px solid #1f2937 !important;
 }
 
 body.dark-mode .sidebar-container .nav-link {
-  color: white !important;
+  color: #e5e7eb !important;
 }
 
-/* navbar */
-body.dark-mode .navbar {
-  background-color: #161b22 !important;
+body.dark-mode .sidebar-container .nav-link:hover {
+  background-color: #111827 !important;
+  color: #f9fafb !important;
 }
 
-body.dark-mode .navbar-text,
-body.dark-mode .navbar-brand {
-  color: white !important;
+/* offcanvas (mobile sidebar) */
+body.dark-mode .offcanvas,
+body.dark-mode .offcanvas-header,
+body.dark-mode .offcanvas-body {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
 }
 
-/* form controls */
-body.dark-mode .form-control {
-  background-color: #0d1117 !important;
-  color: white !important;
-  border-color: #30363d !important;
+body.dark-mode .offcanvas .btn-close {
+  filter: invert(1);
 }
 
-body.dark-mode .form-control:focus {
-  background-color: #0d1117 !important;
-  color: white !important;
-  border-color: #58a6ff !important;
+/*************************************************
+  GENERIC CARDS / LISTS / TABLES
+**************************************************/
+
+body.dark-mode .card,
+body.dark-mode .summary-card-upgraded,
+body.dark-mode .total-card,
+body.dark-mode .accounts-card,
+body.dark-mode .budget-card-upgraded,
+body.dark-mode .empty-card-upgraded,
+body.dark-mode .stat-card,
+body.dark-mode .report-card {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2937 !important;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.45) !important;
 }
 
+body.dark-mode .card-header {
+  background-color: #020617 !important;
+  border-bottom-color: #1f2937 !important;
+}
+
+/* list-group items */
 body.dark-mode .list-group-item {
-  background-color: #161b22 !important;
-  color: white !important;
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2937 !important;
 }
 
-/* buttons look nicer */
-body.dark-mode .btn-outline-primary {
-  border-color: #58a6ff;
-  color: #58a6ff;
+/* bootstrap muted text -> brighter in dark mode */
+body.dark-mode .text-muted,
+body.dark-mode .small,
+body.dark-mode .form-text {
+  color: #9ca3af !important;
 }
 
-body.dark-mode .btn-outline-primary:hover {
-  background-color: #58a6ff;
-  color: black !important;
+/*************************************************
+  BUTTONS / BADGES / FORMS
+**************************************************/
+
+/* primary button stays blue but slightly brighter text */
+body.dark-mode .btn-primary {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #f9fafb !important;
+}
+
+body.dark-mode .btn-primary:hover {
+  background-color: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+}
+
+/* outline-secondary / light buttons */
+body.dark-mode .btn-outline-secondary {
+  border-color: #4b5563 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .btn-outline-secondary:hover {
+  background-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+body.dark-mode .btn-light,
+body.dark-mode .dropdown-toggle.btn-light {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2937 !important;
+}
+
+body.dark-mode .btn-light:hover,
+body.dark-mode .dropdown-toggle.btn-light:hover {
+  background-color: #1f2937 !important;
+}
+
+/* badges */
+body.dark-mode .badge.bg-light,
+body.dark-mode .badge.bg-secondary {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+}
+
+/* forms */
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2937 !important;
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 0.15rem rgba(59,130,246,0.4) !important;
+}
+
+/*************************************************
+  MODALS
+**************************************************/
+
+body.dark-mode .modal-content {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #1f2937 !important;
+}
+
+body.dark-mode .modal-header,
+body.dark-mode .modal-footer {
+  border-color: #1f2937 !important;
+}
+
+body.dark-mode .modal-backdrop.show {
+  opacity: 0.7;
+}
+
+/*************************************************
+  DASHBOARD + REPORTS (generic)
+**************************************************/
+
+/* you probably have dashboard cards & report cards already covered 
+   by the generic card styles above; this just tweaks headings */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5 {
+  color: #f9fafb !important;
+}
+
+/* Recharts tooltips (if you use them) */
+body.dark-mode .recharts-default-tooltip {
+  background-color: #020617 !important;
+  border: 1px solid #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+/*************************************************
+  TRANSACTIONS PAGE
+**************************************************/
+
+/* transaction day header ("Friday 21 Nov  - ₹xxx") */
+body.dark-mode .day-header {
+  color: #e5e7eb !important;
+}
+
+/* daily total at right side */
+body.dark-mode .day-total {
+  font-weight: 600;
+}
+body.dark-mode .day-total.negative {
+  color: #f97373 !important; /* light red */
+}
+body.dark-mode .day-total.positive {
+  color: #4ade80 !important; /* light green */
+}
+
+/* each transaction row */
+body.dark-mode .txn-item {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border: 1px solid #1f2937 !important;
+}
+
+/* icon box */
+body.dark-mode .txn-icon {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+}
+
+/* title & subtitle */
+body.dark-mode .txn-title {
+  color: #f9fafb !important;
+}
+
+body.dark-mode .txn-sub {
+  color: #9ca3af !important;
+}
+
+/* amount */
+body.dark-mode .txn-amount {
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .txn-amount.amt-negative {
+  color: #f97373 !important;
+}
+
+body.dark-mode .txn-amount.amt-positive {
+  color: #4ade80 !important;
+}
+
+/*************************************************
+  ACCOUNTS PAGE
+**************************************************/
+
+/* main cards */
+body.dark-mode .total-card,
+body.dark-mode .accounts-card {
+  background-color: #020617 !important;
+  border-color: #1f2937 !important;
+}
+
+/* account rows */
+body.dark-mode .acct-row {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+/* icon background */
+body.dark-mode .acct-icon-wrap {
+  background-color: #111827 !important;
+}
+
+body.dark-mode .acct-icon {
+  color: #e5e7eb !important;
+}
+
+/* text */
+body.dark-mode .acct-name {
+  color: #f9fafb !important;
+}
+
+body.dark-mode .acct-type {
+  color: #9ca3af !important;
+}
+
+/* balance pill */
+body.dark-mode .acct-badge {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+}
+
+/* negative balance -> red */
+body.dark-mode .acct-badge.bg-danger,
+body.dark-mode .acct-badge.badge.bg-danger {
+  background-color: #b91c1c !important;
+  color: #f9fafb !important;
+}
+
+/*************************************************
+  BUDGETS PAGE
+**************************************************/
+
+/* page background is already dark; just adjust text */
+body.dark-mode .budgets-page-upgraded {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+/* summary cards are generic card already; tweak subtitle color */
+body.dark-mode .summary-title {
+  color: #9ca3af !important;
+}
+
+body.dark-mode .summary-value {
+  color: #f9fafb !important;
+}
+
+/* budget card main */
+body.dark-mode .budget-card-upgraded {
+  background-color: #020617 !important;
+  border-color: #1f2937 !important;
+}
+
+body.dark-mode .budget-title {
+  color: #f9fafb !important;
+}
+
+body.dark-mode .budget-meta {
+  color: #9ca3af !important;
+}
+
+/* circular progress track */
+body.dark-mode .circular-progress circle:first-of-type {
+  stroke: #111827 !important;
+}
+
+/* recent transactions inside budget card */
+body.dark-mode .recent-item {
+  background-color: #020617 !important;
+  border-color: #1f2937 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .recent-item .text-muted,
+body.dark-mode .recent-item .small {
+  color: #9ca3af !important;
+}
+
+/*************************************************
+  SETTINGS PAGE (mostly forms)
+**************************************************/
+
+/* covered by global forms/card styles; if you have a settings wrapper: */
+body.dark-mode .settings-page {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+/*************************************************
+  MISC
+**************************************************/
+
+/* scrollbars (optional) */
+body.dark-mode ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+body.dark-mode ::-webkit-scrollbar-track {
+  background: #020617;
+}
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 999px;
+}
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+
+
+/* === Sidebar (desktop) – match main dark background === */
+body.dark-mode .sidebar-container {
+  background-color: #020617 !important;   /* same as app background */
+  border-right: 1px solid #111827;
+}
+
+body.dark-mode .sidebar-container .nav-link {
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .sidebar-container .nav-link:hover,
+body.dark-mode .sidebar-container .nav-link:focus,
+body.dark-mode .sidebar-container .nav-link.active {
+  background-color: #111827 !important;
+  color: #ffffff !important;
+}
+
+/* === Mobile sidebar (Offcanvas) – remove white header === */
+body.dark-mode .mobile-sidebar,
+body.dark-mode .mobile-sidebar .offcanvas-header,
+body.dark-mode .mobile-sidebar .offcanvas-body {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .mobile-sidebar .offcanvas-header {
+  border-bottom: 1px solid #111827;
+}
+
+body.dark-mode .mobile-sidebar .offcanvas-title {
+  color: #f9fafb !important;
+}
+
+body.dark-mode .mobile-sidebar .btn-close {
+  filter: invert(1); /* make close icon visible on dark bg */
+}
+
+/* mobile sidebar links */
+body.dark-mode .mobile-sidebar .nav-link {
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .mobile-sidebar .nav-link:hover,
+body.dark-mode .mobile-sidebar .nav-link:focus,
+body.dark-mode .mobile-sidebar .nav-link.active {
+  background-color: #111827 !important;
+  color: #ffffff !important;
+}
+
+/*************************************************
+  FIX DESKTOP SIDEBAR NOT MATCHING DARK BG
+**************************************************/
+body.dark-mode .sidebar,
+body.dark-mode .sidebar-wrapper,
+body.dark-mode .sidebar-main,
+body.dark-mode .sidebar-container {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+  border-right: 1px solid #111827 !important;
+}
+
+body.dark-mode .sidebar .nav-link,
+body.dark-mode .sidebar-wrapper .nav-link {
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .sidebar .nav-link:hover,
+body.dark-mode .sidebar-wrapper .nav-link:hover,
+body.dark-mode .sidebar .nav-link.active,
+body.dark-mode .sidebar-wrapper .nav-link.active {
+  background-color: #111827 !important;
+  color: #ffffff !important;
+}
+
+/*************************************************
+  FIX MOBILE SIDEBAR WHITE HEADER
+**************************************************/
+body.dark-mode .mobile-sidebar,
+body.dark-mode .mobile-sidebar .offcanvas,
+body.dark-mode .mobile-sidebar .offcanvas-header,
+body.dark-mode .mobile-sidebar .offcanvas-body {
+  background-color: #020617 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark-mode .mobile-sidebar .offcanvas-header {
+  border-bottom: 1px solid #111827 !important;
+}
+
+body.dark-mode .mobile-sidebar .offcanvas-title {
+  color: #f9fafb !important;
+}
+
+body.dark-mode .mobile-sidebar .btn-close {
+  filter: invert(1);
+}
+/*************************************************
+  FIX DESKTOP SIDEBAR NOT MATCHING DARK BG
+**************************************************/
+body.dark-mode .sidebar,
+body.dark-mode .sidebar-wrapper,
+body.dark-mode .sidebar-main,
+body.dark-mode .sidebar-container {
+  background-color: #020617 !important;
+  border-right: 1px solid #111827 !important;
 }
