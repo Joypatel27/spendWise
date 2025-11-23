@@ -67,8 +67,8 @@ const TopNavbar = ({ handleShowSidebar }) => {
           <span className="brand-text">SpendWise</span>
         </Navbar.Brand>
 
-        {/* Page title – center on md+ */}
-        <div className="nav-page-title d-none d-md-block">{pageTitle}</div>
+        {/* Page title – center on md+
+        <div className="nav-page-title d-none d-md-block">{pageTitle}</div> */}
 
         {/* Right section */}
         <Nav className="ms-auto align-items-center nav-right">

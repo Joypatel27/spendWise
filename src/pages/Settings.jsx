@@ -157,12 +157,12 @@ const Settings = () => {
             <Card className="mb-4">
               <Card.Header>
                 <Card.Title className="mb-0">
-                  <FaDatabase className="me-2" /> Data & Account
+                  <FaDatabase className="me-2" /> Account
                 </Card.Title>
               </Card.Header>
               <Card.Body>
                 <div className="d-flex gap-2 flex-wrap">
-                  <Button variant="outline-secondary" onClick={handleExportData}>Export data</Button>
+                  {/* <Button variant="outline-secondary" onClick={handleExportData}>Export data</Button> */}
                   <Button variant="outline-danger" onClick={() => { localStorage.clear(); window.location.href = "/login"; }}>Log out</Button>
                 </div>
               </Card.Body>

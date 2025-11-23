@@ -65,6 +65,38 @@ body.dark-mode .btn-outline-light:hover {
   SIDEBAR – DESKTOP
   .sidebar-desktop comes from Sidebar.jsx
 **************************************************/
+/* DESKTOP SIDEBAR (fixed) */
+.sidebar-desktop {
+  position: fixed;
+  top: 60px; /* same as navbar height */
+  left: 0;
+  height: calc(100vh - 60px);
+  width: 220px;
+
+  /* 🔥 NEW — match screenshot dark grey */
+  background-color: #343a40 !important;
+  color: #fff;
+
+  padding-top: 20px;
+  overflow-y: auto;
+  z-index: 1040;
+}
+
+/* Desktop links */
+.sidebar-desktop .nav-link {
+  color: #ffffff;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.sidebar-desktop .nav-link:hover {
+  background-color: #495057 !important;
+  color: #ffffff;
+}
 
 body.dark-mode .sidebar-desktop {
   position: fixed; /* keep layout behaviour */
@@ -437,4 +469,14 @@ body.dark-mode ::-webkit-scrollbar-thumb {
 body.dark-mode ::-webkit-scrollbar-thumb:hover {
   background: #4b5563;
 }
+
+
+
+
+
+
+
+
+
+
 
