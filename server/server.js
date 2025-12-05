@@ -27,8 +27,6 @@ app.use("/api/budgets", require("./routes/budgetRoutes"));
 app.use("/api/accounts", require("./routes/accountRoutes"));
 
 
-
-
 app.get("/", (req, res) => res.send("API running..."));
 
 const PORT = process.env.PORT || 5000;
